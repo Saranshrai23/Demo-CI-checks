@@ -207,6 +207,15 @@ pipeline {
                 '''
             }
         }
+
+        stage('Security Scan') {
+            steps {
+                sh '''
+                . venv/bin/activate
+                bandit -r . -x ./venv
+                '''
+            }
+        }
     }
 
     post {
