@@ -147,6 +147,7 @@ EOF
 ```txt
 pytest
 flake8
+bandit
 ```
 
 ---
