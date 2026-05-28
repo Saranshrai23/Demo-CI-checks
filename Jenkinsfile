@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     stages {
+
         stage('Checkout Code') {
             steps {
                 echo 'Code checkout completed'
@@ -12,9 +13,13 @@ pipeline {
             steps {
                 sh '''
                 python3 --version
+
                 python3 -m venv venv
+
                 . venv/bin/activate
+
                 pip install --upgrade pip
+
                 pip install -r requirements.txt
                 '''
             }
@@ -24,6 +29,7 @@ pipeline {
             steps {
                 sh '''
                 . venv/bin/activate
+
                 python -m py_compile app.py
                 '''
             }
@@ -33,6 +39,7 @@ pipeline {
             steps {
                 sh '''
                 . venv/bin/activate
+
                 flake8 app.py test_app.py
                 '''
             }
@@ -42,18 +49,35 @@ pipeline {
             steps {
                 sh '''
                 . venv/bin/activate
+
                 pytest
+                '''
+            }
+        }
+
+        stage('Security Scan - SAST') {
+            steps {
+                sh '''
+                . venv/bin/activate
+
+                bandit -r . -x ./venv
                 '''
             }
         }
     }
 
     post {
+
         success {
             echo 'CI checks passed successfully.'
         }
+
         failure {
             echo 'CI checks failed. Please fix the issue.'
+        }
+
+        always {
+            echo 'Pipeline execution completed.'
         }
     }
 }
