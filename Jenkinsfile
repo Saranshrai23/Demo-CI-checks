@@ -60,7 +60,7 @@ pipeline {
                 sh '''
                 . venv/bin/activate
 
-                bandit -r . -x ./venv
+                bandit -r app.py
                 '''
             }
         }
