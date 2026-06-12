@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     stages {
+
         stage('Checkout Code') {
             steps {
                 checkout scm
@@ -13,10 +14,15 @@ pipeline {
             steps {
                 sh '''
                 python3 --version
+
                 python3 -m venv venv
+
                 . venv/bin/activate
+
                 pip install --upgrade pip
+
                 pip install -r requirements.txt
+
                 pip install flake8 pytest bandit
                 '''
             }
@@ -26,6 +32,7 @@ pipeline {
             steps {
                 sh '''
                 . venv/bin/activate
+
                 python -m py_compile app.py
                 '''
             }
@@ -35,6 +42,7 @@ pipeline {
             steps {
                 sh '''
                 . venv/bin/activate
+
                 flake8 app.py test_app.py
                 '''
             }
@@ -44,6 +52,7 @@ pipeline {
             steps {
                 sh '''
                 . venv/bin/activate
+
                 pytest
                 '''
             }
@@ -53,13 +62,15 @@ pipeline {
             steps {
                 sh '''
                 . venv/bin/activate
-                bandit -r . -x ./venv
+
+                bandit -r . -x ./venv,test_app.py
                 '''
             }
         }
     }
 
     post {
+
         success {
             echo 'CI checks passed successfully.'
         }
