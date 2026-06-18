@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A Special Message For You ❤️</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: #ffe6f2;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            margin:0;
+        }
+
+        .box{
+            background:white;
+            padding:40px;
+            border-radius:20px;
+            text-align:center;
+            width:500px;
+            box-shadow:0 0 20px rgba(0,0,0,0.2);
+        }
+
+        h1{
+            color:#ff4d88;
+        }
+
+        button{
+            padding:15px 30px;
+            font-size:18px;
+            border:none;
+            border-radius:10px;
+            background:#ff4d88;
+            color:white;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#ff1a66;
+        }
+
+        #roast{
+            margin-top:25px;
+            font-size:22px;
+            font-weight:bold;
+            color:#cc0066;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h1>💖 A Special Surprise Just For You 💖</h1>
+
+    <p>
+        This website was specially made because you're such an amazing person.
+        Click below to see why. 😇
+    </p>
+
+    <button onclick="roast()">Click Here ❤️</button>
+
+    <div id="roast"></div>
+</div>
+
+<script>
+
+let roasts = [
+"😂 You take so long to reply that historians are still waiting for your last message.",
+"😂 Your screen time report files a missing person complaint when you go offline.",
+"😂 You say 'I'm on my way' while still choosing clothes.",
+"😂 If overthinking burned calories, you'd be a fitness influencer.",
+"😂 You have 500 selfies and still say 'I have no good photos.'",
+"😂 Your phone storage is 90% screenshots you'll never open again.",
+"😂 You're proof that confidence doesn't require accuracy.",
+"😂 You could start a fight in an empty room.",
+"😂 You ask for advice and then do the opposite.",
+"😂 You're my best friend because nobody else would tolerate you."
+];
+
+let count = 0;
+
+function roast(){
+
+    if(count < roasts.length){
+        document.getElementById("roast").innerHTML = roasts[count];
+        count++;
+    }
+    else{
+        document.getElementById("roast").innerHTML =
+        "🏆 Congratulations! You've unlocked the final achievement: Being roasted more times than you've replied on time.";
+    }
+}
+
+</script>
+
+</body>
+</html>
