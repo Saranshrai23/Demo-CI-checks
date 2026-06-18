@@ -2,10 +2,11 @@
 <html>
 <head>
     <title>A Special Message For You ❤️</title>
+
     <style>
         body{
             font-family: Arial, sans-serif;
-            background: #ffe6f2;
+            background: linear-gradient(135deg, #ffd6e7, #ffeef5);
             display:flex;
             justify-content:center;
             align-items:center;
@@ -18,12 +19,17 @@
             padding:40px;
             border-radius:20px;
             text-align:center;
-            width:500px;
-            box-shadow:0 0 20px rgba(0,0,0,0.2);
+            width:550px;
+            box-shadow:0 0 25px rgba(0,0,0,0.15);
         }
 
         h1{
             color:#ff4d88;
+        }
+
+        p{
+            font-size:18px;
+            color:#555;
         }
 
         button{
@@ -34,10 +40,12 @@
             background:#ff4d88;
             color:white;
             cursor:pointer;
+            transition:0.3s;
         }
 
         button:hover{
             background:#ff1a66;
+            transform:scale(1.05);
         }
 
         #roast{
@@ -45,48 +53,56 @@
             font-size:22px;
             font-weight:bold;
             color:#cc0066;
+            min-height:80px;
         }
     </style>
 </head>
+
 <body>
 
 <div class="box">
-    <h1>💖 A Special Surprise Just For You 💖</h1>
+
+    <h1>💖 A Special Surprise For Mehak 💖</h1>
 
     <p>
-        This website was specially made for mehak because you're such an amazing person.
-        Click below to see why. 😇
+        This website was specially made for Mehak.
+        Click the button below at your own risk. 😈
     </p>
 
     <button onclick="roast()">Click Here ❤️</button>
 
     <div id="roast"></div>
+
 </div>
 
 <script>
 
 let roasts = [
+
 "💀 Teri personality itni exhausting hai ki power bank bhi tere saath rehke discharge ho jaye.",
 "💀 Tu itni confusing hai ki khud ka red flag bhi identify nahi kar pati.",
 "💀 Tujhe dekh ke lagta hai evolution kabhi kabhi coffee break bhi leti hai.",
 "💀 Tu attention nahi leti, attention kidnap karti hai.",
 "💀 Tere future husband ke liye main abhi se dua kar raha hoon.",
 "💀 Tere saath argument jeetna impossible hai kyunki logic to aata hi nahi beech mein.",
-"💀 Tu reason hai ki shampoo bottles par instructions likhi hoti hain."
+"💀 Tu reason hai ki shampoo bottles par instructions likhi hoti hain.",
+"💀 Tu meri best friend nahi, Bhagwan ka patience test project hai.",
+"💀 Tera '5 minute mein ready ho jaungi' itna famous jhooth hai ki Guinness World Record mil sakta hai.",
+"💀 Teri shopping cart aur India ka national debt dono kabhi khatam nahi hote.",
+"💀 Tu advice maangti hai sirf uska ulta karne ke liye.",
+"💀 Agar bakwaas bolne se paisa milta na, tu billionaire hoti.",
+"💀 Teri memory selective hai — meri beizzati yaad rehti hai, apni galti nahi.",
+"💀 Tu itni dramatic hai ki daily life ko Netflix series bana sakti hai.",
+"☠️ Congratulations! Tu officially meri daily stress-testing environment hai."
+
 ];
-    
-let count = 0;
 
-function roast(){
+function roast() {
 
-    if(count < roasts.length){
-        document.getElementById("roast").innerHTML = roasts[count];
-        count++;
-    }
-    else{
-        document.getElementById("roast").innerHTML =
-        "🏆 Congratulations! You've unlocked the final achievement: Being roasted more times than you've replied on time.";
-    }
+    let randomRoast =
+        roasts[Math.floor(Math.random() * roasts.length)];
+
+    document.getElementById("roast").innerHTML = randomRoast;
 }
 
 </script>
